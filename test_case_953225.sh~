@@ -67,6 +67,8 @@ done
 sleep 3
 touch test_case_report.txt
 ./numa-maps -n usemem  >> test_case_report.txt
+echo "==========================================="
 echo "please check the test_case_report.txt file."
+echo "==========================================="
 
 exit 0
