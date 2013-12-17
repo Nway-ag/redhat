@@ -26,6 +26,7 @@
 # # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 cur_path=$(pwd)
+FAIL_COUNT=0
 
 ### compile the C program ###
 #wget -p $(pwd) https://...
@@ -53,22 +54,32 @@ cd ..; rm -rf numa/
 
 ### running the C program to testing ###
 for i in 0 1 2 5 15; do
-	numactl --physcpubind=$i ./breakthp 1024 2048 4 60 &
+	numactl --physcpubind=$i ./breakthp 1024 2048 4 60 > /dev/null  &
 done
 
 echo "sleeping 15..."
 sleep 15
 
 for i in 0 1 2 5 15; do
-	numactl --physcpubind=$i ./usemem 1024 10 &
+	numactl --physcpubind=$i ./usemem 1024 10 > /dev/null &
 done
 
 ### to check the numa-maps output ###
 sleep 3
 touch test_case_report.txt
 ./numa-maps -n usemem  >> test_case_report.txt
-echo "==========================================="
-echo "please check the test_case_report.txt file."
-echo "==========================================="
+
+### to judgement the data###
+MEM=(awk '{print $4}' test_case_report.txt | sed -n '2p')
+if [ $MEM -nq 1.00G } ]; then
+	FAIL_COUNT=$((FAIL_COUNT + 1));
+fi
+
+### here print the result of cases ###
+if [ $FAIL_COUNT -ne 0 ]; then
+	echo "Failed: there are $FAIL_COUNT cases failed."
+else
+	echo "Success: Test PASS!"
+fi
 
 exit 0
