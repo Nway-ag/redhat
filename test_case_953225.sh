@@ -48,20 +48,20 @@ echo never >/sys/kernel/mm/transparent_hugepage/enabled
 
 ### download the numa-code required ###
 mkdir numa && cd numa 
-git init && git clone https://code.google.com/p/numa-maps/
+git init && git clone https://code.google.com/p/numa-maps/ 
 cp numa-maps/* ..
 cd ..; rm -rf numa/
 
 ### running the C program to testing ###
 for i in 0 1 2 5 15; do
-	numactl --physcpubind=$i ./breakthp 1024 2048 4 60 > /dev/null  &
+	numactl --physcpubind=$i ./breakthp 1024 2048 4 60   &
 done
 
 echo "sleeping 15..."
 sleep 15
 
 for i in 0 1 2 5 15; do
-	numactl --physcpubind=$i ./usemem 1024 10 > /dev/null &
+	numactl --physcpubind=$i ./usemem 1024 10  &
 done
 
 ### to check the numa-maps output ###
@@ -70,8 +70,8 @@ touch test_case_report.txt
 ./numa-maps -n usemem  >> test_case_report.txt
 
 ### to judgement the data###
-MEM=(awk '{print $4}' test_case_report.txt | sed -n '2p')
-if [ $MEM -nq 1.00G } ]; then
+MEM=`awk '{print $4}' test_case_report.txt | sed -n '2p'`
+if [ "$MEM" == "1.00G" ]; then
 	FAIL_COUNT=$((FAIL_COUNT + 1));
 fi
 
