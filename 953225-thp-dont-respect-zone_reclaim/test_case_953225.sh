@@ -103,7 +103,7 @@ function check_the_output()
 		elif [ "$N0" = "0" ]; then
 			continue
 		else
-			echo "FAIL: Test case failed"
+			echo "FAIL: Test case failed."
 			cleanup
 			exit -1
 		fi
