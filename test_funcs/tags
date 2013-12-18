@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+BUILT_FILES	Makefile	/^BUILT_FILES= $/;"	m
+EST	Makefile	/^export TEST=\/$(TOPLEVEL_NAMESPACE)\/$(PACKAGE_NAME)\/$(RELATIVE_PATH)$/;"	m
+ESTVERSION	Makefile	/^export TESTVERSION=1.1$/;"	m
+FILES	Makefile	/^FILES=$(METADATA) runtest.sh test_funcs.sh Makefile PURPOSE$/;"	m
+PACKAGE_NAME	Makefile	/^PACKAGE_NAME=vm\/numad$/;"	m
+RELATIVE_PATH	Makefile	/^RELATIVE_PATH=test_funcs$/;"	m
+TOPLEVEL_NAMESPACE	Makefile	/^TOPLEVEL_NAMESPACE=kernel$/;"	m
+check_sys_version	test_funcs.sh	/^function check_sys_version()$/;"	f
+main	test_funcs.sh	/^function main()$/;"	f
+set_default	test_funcs.sh	/^function set_default()$/;"	f
+start_numad	test_funcs.sh	/^function start_numad()$/;"	f
+stop_numad	test_funcs.sh	/^function stop_numad()$/;"	f
+test_args_i	test_funcs.sh	/^function test_args_i()$/;"	f
+test_args_l	test_funcs.sh	/^function test_args_l()$/;"	f
+test_args_u	test_funcs.sh	/^function test_args_u()$/;"	f
+test_args_w	test_funcs.sh	/^function test_args_w()$/;"	f
