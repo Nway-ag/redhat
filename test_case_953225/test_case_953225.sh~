@@ -26,7 +26,7 @@
 # # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 cur_path=$(pwd)
-FAIL_COUNT=-1
+FAIL_COUNT=0
 
 function compile_tools()
 {
@@ -55,6 +55,7 @@ function test_running()
 {
 	### running the C program to testing ###
 	numa_node=`numactl -H | sed -n '2p' | cut -b 14-18 && numactl -H | sed -n '5p' | cut -b 14-18` 
+
 	for i in $numa_node; do
 		numactl --physcpubind=$i ./breakthp 1024 2048 4 60   &
 	done
@@ -88,7 +89,7 @@ function check_the_output()
 	done
 
 	### here print the result of cases ###
-	if [ $FAIL_COUNT -ne 4 ]; then
+	if [ $FAIL_COUNT -ne 5 ]; then
 		echo "Failed:FAIL_COUNT is/are: $FAIL_COUNT, cases failed."
 	else
 		echo "Success: Test Pass!"
