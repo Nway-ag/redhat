@@ -45,7 +45,7 @@ run: build
 
 build: $(BUILT_FILES)
 	chmod a+x ./runtest.sh
-	chmod a+x ./test_case_953225.sh 
+	chmod a+x ./test_funcs.sh
 
 clean:
 	rm -f *~ *.rpm $(BUILT_FILES)
