@@ -64,12 +64,14 @@ int main(int argc, char *argv[])
 	if (buf[i] == MAP_FAILED)
 		perror ("mremap");
 
-	/* Optionally sleep for N seconds */
+	/* Optionally sleep for N seconds 
 	if (argc == 5) {
 		fprintf(stderr, "Sleeping...\n");
 		sleep (atoi (argv[4]));
 	}
-
+	*/
+	//I had change this line code to run program 60
+	sleep(60);
 	fprintf(stderr, "Unmapping memory\n");
 	for (i=0; i < chunks; i++) 
 		munmap(buf[i], size2);

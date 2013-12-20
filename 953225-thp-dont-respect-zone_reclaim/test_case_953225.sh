@@ -78,8 +78,8 @@ function test_running()
 
 	echo
 	for i in $numa_node; do
-		echo "LOGINFO: Start to run $numactl --physcpubind=$i ./usemem 1024 10"
-		numactl --physcpubind=$i ./usemem 1024 10 2&>1 > /dev/null &
+		echo "LOGINFO: Start to run $numactl --physcpubind=$i ./usemem 1024 "
+		numactl --physcpubind=$i ./usemem 1024  2&>1 > /dev/null &
 	done
 }
 

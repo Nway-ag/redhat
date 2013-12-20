@@ -84,10 +84,12 @@ int main(int argc, char *argv[])
 	}
 	timing_print (tvp);
 
-	/* Optionally sleep for N seconds */
+	/* Optionally sleep for N seconds 
 	if (argc == 3)
 		sleep (atoi (argv[2]));
-
+	*/
+	//also change here to run program 20s
+	sleep(20);
 	fprintf (stderr, "Freeing %ldM\n", mb);
 	timing_start (tvp);
 	for (i = 0; i < CHUNKS; i++)
