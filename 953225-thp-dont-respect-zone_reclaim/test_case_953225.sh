@@ -42,7 +42,7 @@ function compile_tools()
 
 function setup_test_env()
 {
-	compile_tools;
+	compile_tools
 
 	### set the env for testing ###
 	zone_reclaim_mode=`cat /proc/sys/vm/zone_reclaim_mode`
@@ -102,7 +102,7 @@ function check_the_output()
 			continue
 		else
 			echo "FAIL: Test case failed."
-			cleanup;
+			cleanup
 			exit -1
 		fi
 	done
@@ -112,12 +112,12 @@ function check_the_output()
 
 function main()
 {
-	setup_test_env;
-	test_running;
-	check_the_output;
-	cleanup;
+	setup_test_env
+	test_running
+	check_the_output
+	cleanup
 
 	return 0
 }
 
-main;
+main
