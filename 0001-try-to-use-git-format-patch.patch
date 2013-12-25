@@ -1,0 +1,224 @@
+From 5880326a7d08507785c68e1c2e1aec119cf966aa Mon Sep 17 00:00:00 2001
+From: Levi Wang <wangli5665@gmail.com>
+Date: Fri, 20 Dec 2013 22:20:41 +0800
+Subject: [PATCH] try to use git format-patch
+
+---
+ 953225-thp-dont-respect-zone_reclaim/Makefile~     | 79 ----------------------
+ 953225-thp-dont-respect-zone_reclaim/breakthp.c    |  6 +-
+ .../test_case_953225.sh                            |  4 +-
+ 953225-thp-dont-respect-zone_reclaim/usemem.c      |  6 +-
+ redhat_email.txt                                   | 60 ----------------
+ 5 files changed, 10 insertions(+), 145 deletions(-)
+ delete mode 100644 953225-thp-dont-respect-zone_reclaim/Makefile~
+ delete mode 100644 redhat_email.txt
+
+diff --git a/953225-thp-dont-respect-zone_reclaim/Makefile~ b/953225-thp-dont-respect-zone_reclaim/Makefile~
+deleted file mode 100644
+index 9b56e32..0000000
+--- a/953225-thp-dont-respect-zone_reclaim/Makefile~
++++ /dev/null
+@@ -1,79 +0,0 @@
+-# Copyright (c) 2013 Red Hat, Inc. All rights reserved. This copyrighted material 
+-# is made available to anyone wishing to use, modify, copy, or
+-# redistribute it subject to the terms and conditions of the GNU General
+-# Public License v.2.
+-#
+-# This program is distributed in the hope that it will be useful, but WITHOUT ANY
+-# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+-# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with this program; if not, write to the Free Software
+-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+-#
+-# Author: Li Wang <liwan@redhat.com> 
+-
+-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+-# Example Makefile for RHTS                                          #
+-# This example is geared towards a test for a specific package       #
+-# It does most of the work for you, but may require further coding   #
+-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+-
+-TOPLEVEL_NAMESPACE=kernel
+-PACKAGE_NAME=vm/regression
+-RELATIVE_PATH=953225-thp-dont-respect-zone_reclaim
+-
+-export TESTVERSION=1.1
+-export TEST=/$(TOPLEVEL_NAMESPACE)/$(PACKAGE_NAME)/$(RELATIVE_PATH)
+-
+-
+-# A phony target is one that is not really the name of a file.
+-# It is just a name for some commands to be executed when you
+-# make an explicit request. There are two reasons to use a
+-# phony target: to avoid a conflict with a file of the same
+-# name, and to improve performance.
+-.PHONY: all install download clean
+-
+-# executables to be built should be added here, they will be generated on the system under test.
+-BUILT_FILES= 
+-
+-# data files, .c files, scripts anything needed to either compile the test and/or run it.
+-FILES=$(METADATA) runtest.sh numa-maps test_case_953225.sh usemem.c breakthp.c Makefile
+-
+-run: build
+-	./runtest.sh
+-
+-build: $(BUILT_FILES)
+-	chmod a+x ./runtest.sh
+-	chmod a+x ./test_funcs.sh
+-
+-clean:
+-	rm -f *~ *.rpm $(BUILT_FILES)
+-
+-# You may need to add other targets e.g. to build executables from source code
+-# Add them here:
+-
+-
+-# Include Common Makefile
+-include /usr/share/rhts/lib/rhts-make.include
+-
+-# Generate the testinfo.desc here:
+-$(METADATA): Makefile
+-	@touch $(METADATA)
+-# Change to the test owner's name
+-	@echo "Owner:        Li Wang <liwan@redhat.com>" > $(METADATA)
+-	@echo "Name:         $(TEST)" >> $(METADATA)
+-	@echo "Path:         $(TEST_DIR)"       >> $(METADATA)
+-	@echo "License:      GPLv2" >> $(METADATA)
+-	@echo "TestVersion:  $(TESTVERSION)"    >> $(METADATA)
+-	@echo "Description:  reproducer for bug 953225">> $(METADATA)
+-	@echo "TestTime:     30m" >> $(METADATA)
+-	@echo "RunFor:       kernel glibc" >> $(METADATA)  
+-# add any other packages for which your test ought to run here
+-	@echo "Requires:     $(PACKAGE_NAME)" >> $(METADATA)  
+-	@echo "Requires:     numactl" >> $(METADATA)
+-	@echo "Requires:     @development" >> $(METADATA)
+-	@echo "Releases:     RHEL6 RHEL7" >> $(METADATA)
+-	@echo "Destructive:  no" >> $(METADATA)
+-	@echo "Confidential: no" >> $(METADATA)
+-	@echo "Priority:     Normal" >>$(METADATA)
+diff --git a/953225-thp-dont-respect-zone_reclaim/breakthp.c b/953225-thp-dont-respect-zone_reclaim/breakthp.c
+index 2029bb1..c8b2cab 100644
+--- a/953225-thp-dont-respect-zone_reclaim/breakthp.c
++++ b/953225-thp-dont-respect-zone_reclaim/breakthp.c
+@@ -64,12 +64,14 @@ int main(int argc, char *argv[])
+ 	if (buf[i] == MAP_FAILED)
+ 		perror ("mremap");
+ 
+-	/* Optionally sleep for N seconds */
++	/* Optionally sleep for N seconds 
+ 	if (argc == 5) {
+ 		fprintf(stderr, "Sleeping...\n");
+ 		sleep (atoi (argv[4]));
+ 	}
+-
++	*/
++	//I had change this line code to run program 60
++	sleep(60);
+ 	fprintf(stderr, "Unmapping memory\n");
+ 	for (i=0; i < chunks; i++) 
+ 		munmap(buf[i], size2);
+diff --git a/953225-thp-dont-respect-zone_reclaim/test_case_953225.sh b/953225-thp-dont-respect-zone_reclaim/test_case_953225.sh
+index 1822fef..5b9325e 100755
+--- a/953225-thp-dont-respect-zone_reclaim/test_case_953225.sh
++++ b/953225-thp-dont-respect-zone_reclaim/test_case_953225.sh
+@@ -78,8 +78,8 @@ function test_running()
+ 
+ 	echo
+ 	for i in $numa_node; do
+-		echo "LOGINFO: Start to run $numactl --physcpubind=$i ./usemem 1024 10"
+-		numactl --physcpubind=$i ./usemem 1024 10 2&>1 > /dev/null &
++		echo "LOGINFO: Start to run $numactl --physcpubind=$i ./usemem 1024 "
++		numactl --physcpubind=$i ./usemem 1024  2&>1 > /dev/null &
+ 	done
+ }
+ 
+diff --git a/953225-thp-dont-respect-zone_reclaim/usemem.c b/953225-thp-dont-respect-zone_reclaim/usemem.c
+index b2c011d..57d8ae7 100644
+--- a/953225-thp-dont-respect-zone_reclaim/usemem.c
++++ b/953225-thp-dont-respect-zone_reclaim/usemem.c
+@@ -84,10 +84,12 @@ int main(int argc, char *argv[])
+ 	}
+ 	timing_print (tvp);
+ 
+-	/* Optionally sleep for N seconds */
++	/* Optionally sleep for N seconds 
+ 	if (argc == 3)
+ 		sleep (atoi (argv[2]));
+-
++	*/
++	//also change here to run program 20s
++	sleep(20);
+ 	fprintf (stderr, "Freeing %ldM\n", mb);
+ 	timing_start (tvp);
+ 	for (i = 0; i < CHUNKS; i++)
+diff --git a/redhat_email.txt b/redhat_email.txt
+deleted file mode 100644
+index 0cbd5cd..0000000
+--- a/redhat_email.txt
++++ /dev/null
+@@ -1,60 +0,0 @@
+-Subject: Weekly Status Report: Week 49
+-
+-Dear Cui Chun,
+-
+-This week's achievements:
+-============================
+-These days I do some preparatory work for my new job: setup my account and sign in Redhat system.
+-
+-Learning what is kerberos authentication system and initialize it on my workstation.
+-
+-I also have been familiar with some useful tools about kernel testing work, such as Beaker, Bugzilla£¬Xchat, etc. 
+-
+-Next week:
+-================
+-I will try my best to master these commonly used tools.
+-
+-Hope to do some real jobs related to kernel testing.
+-
+-Misc:
+-======
+-Some teammates provides much great help for me in my first week, I'm very honored to join the excellent team. 
+-This is the first time I write work report, if there is anything I forgot to mention in this, please point out to me directly, thx :-£©
+-
+-
+----
+-Best Regards,
+-Wang Li
+-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-
+-
+-Subject: Weekly Status Report: Week 50
+-
+-Dear Cui Chun,
+-
+-Greetings! I would like to report my second week's progress to you.
+-
+-
+-This week's achievements:
+-============================
+-These days I did some deeply reseach on my work, which spent much time in making a good use of Beaker to running testcase both manual and automatic.
+-
+-Also I have creat MyRuns in TCMS(Test Case Management System) successfully with the help of Zhouping. 
+-
+-At the end of this week I could reserve some special machines from Beaker System to reproduce bugs step by step from the bugzilla comments.
+-
+-
+-
+-Next week:
+-================
+-Running more test cases to enhance my skill of kernel testing.
+-
+-I'll try my best to reproduce every bugs which I meet.
+-
+-To review some programming language like Bash and C in order to realized that the code of test_case description.
+-
+-To read some documents about memory menagement or kernel testing that I think there may be some help for my job.
+-
+-Misc:
+-=======
+-In addition,I found that some of our teammates like cxie,zhudong and zhaoqiao are full of humor sense,I like to get along with them working and communicating. Of cource I am a big fan of Fedora, I thought our work is really exciting things that is so addictive to me! Hope I can learn from our KTD team much more during my internship and to become a real good kernel QE as you in the future. ;)
+-- 
+1.8.1.2
+
