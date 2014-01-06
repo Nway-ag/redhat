@@ -38,8 +38,8 @@ calctime()
 rlJournalStart
     rlPhaseStartSetup
         echo "- Setup cgroups"
-	rlRun 'echo y | yum install libcgroup' 0 'install libcgroup'
-	rlRun 'restorecon -v /etc/cgconfig.conf' 0 'restore the correct SELinux labels for each of the files'
+        rlRun 'echo y | yum install libcgroup' 0 'install libcgroup'
+        rlRun 'restorecon -v /etc/cgconfig.conf' 0 'restore the correct SELinux labels for each of the files'
         rlRun 'service cgconfig restart' 0 'Start cgconfig'
         rlRun 'mkdir /cgroup/memory/1' 0 'Create new memory cgroup'
         rlRun 'gcc -o malloc_seq malloc_seq.c -lrt' 0 'Build reproducer'
