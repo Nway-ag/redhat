@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 add_timer
 __alloc_percpu
 dma_set_mask
@@ -200,3 +201,7 @@ on_each_cpu
 pci_get_device
 vsprintf
 strcat
+=======
+#!/bin/sh
+
+>>>>>>> 860530fc0e0dab8545b5d060590772a980deeddb

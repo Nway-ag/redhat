@@ -2,6 +2,7 @@
 
 #download all the patches 
 for i in `seq 1 105`; do
+<<<<<<< HEAD
 	patch_link="`cat bz726863_patch_links.txt | sed -n ''$i'p' | awk '{print $3}'`/raw"
 	wget -P ./download_patch $patch_link
 done
@@ -23,6 +24,20 @@ for i in `seq 2 105`; do  #attention!!!
 
 	value=`cat $patch | grep '+' | grep "x86_64" -c`
 	if [ $value -ge 1 ];then
+=======
+	link="`cat bz726863_patch_links.txt | sed -n ''$i'p' | awk '{print $3}'`/raw"
+	wget -P ./download_patch $link
+#	ls -l | awk '{print $9}' |wc
+done
+
+
+cd download_patch;
+for i in `seq 2 105`; do
+	patch=`ls -l | sed -n ''$i'p' | awk '{print $9}'`
+	cat $patch | grep '+'
+	
+	if [grep "x86_64" -eq " "];then
+>>>>>>> 860530fc0e0dab8545b5d060590772a980deeddb
 		cat $patch | grep '+' | sed -n '3p' | awk '{print $2}' >> ../abi_x86_64.txt
 	fi
 
