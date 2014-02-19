@@ -1,0 +1,29 @@
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_ppc64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+@@ -208,4 +208,5 @@
+ 	vlan_dev_real_dev
+ 	vlan_dev_vlan_id
+ 	vmalloc
++	vmap
+ 	wireless_send_event
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_s390x
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+@@ -204,3 +204,4 @@
+ 	vlan_dev_real_dev
+ 	vlan_dev_vlan_id
+ 	vmalloc
++	vmap
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_x86_64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+@@ -214,4 +214,5 @@
+ 	vlan_dev_real_dev
+ 	vlan_dev_vlan_id
+ 	vmalloc
++	vmap
+ 	wireless_send_event

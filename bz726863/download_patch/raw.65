@@ -1,0 +1,24 @@
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_ppc64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+@@ -198,6 +198,7 @@
+ 	strrchr
+ 	strsep
+ 	strstr
++	touch_softlockup_watchdog
+ 	unregister_inet6addr_notifier
+ 	unregister_inetaddr_notifier
+ 	unregister_netdev
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_x86_64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+@@ -203,6 +203,7 @@
+ 	strsep
+ 	strstr
+ 	touch_nmi_watchdog
++	touch_softlockup_watchdog
+ 	unregister_inet6addr_notifier
+ 	unregister_inetaddr_notifier
+ 	unregister_netdev

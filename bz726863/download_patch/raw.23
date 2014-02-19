@@ -1,0 +1,36 @@
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_ppc64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+@@ -88,6 +88,7 @@
+ 	memset
+ 	mod_timer
+ 	msleep
++	mutex_lock
+ 	napi_complete
+ 	napi_get_frags
+ 	napi_gro_frags
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_s390x
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+@@ -84,6 +84,7 @@
+ 	memset
+ 	mod_timer
+ 	msleep
++	mutex_lock
+ 	napi_complete
+ 	napi_get_frags
+ 	napi_gro_frags
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_x86_64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+@@ -92,6 +92,7 @@
+ 	memset
+ 	mod_timer
+ 	msleep
++	mutex_lock
+ 	napi_complete
+ 	napi_get_frags
+ 	napi_gro_frags

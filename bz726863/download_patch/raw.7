@@ -1,0 +1,36 @@
+diff --git a/redhat/kabi/kabi_whitelist_ppc64 b/redhat/kabi/kabi_whitelist_ppc64
+index 4861f1c..2f99cbf 100644
+--- a/redhat/kabi/kabi_whitelist_ppc64
++++ b/redhat/kabi/kabi_whitelist_ppc64
+@@ -20,6 +20,7 @@
+ 	call_usermodehelper
+ 	cancel_delayed_work
+ 	consume_skb
++	cpu_online_mask
+ 	csum_ipv6_magic
+ 	dev_addr_add
+ 	dev_addr_del
+diff --git a/redhat/kabi/kabi_whitelist_s390x b/redhat/kabi/kabi_whitelist_s390x
+index e270c6c..268891a 100644
+--- a/redhat/kabi/kabi_whitelist_s390x
++++ b/redhat/kabi/kabi_whitelist_s390x
+@@ -20,6 +20,7 @@
+ 	call_usermodehelper
+ 	cancel_delayed_work
+ 	consume_skb
++	cpu_online_mask
+ 	csum_ipv6_magic
+ 	dev_addr_add
+ 	dev_addr_del
+diff --git a/redhat/kabi/kabi_whitelist_x86_64 b/redhat/kabi/kabi_whitelist_x86_64
+index ab04c7f..75c410d 100644
+--- a/redhat/kabi/kabi_whitelist_x86_64
++++ b/redhat/kabi/kabi_whitelist_x86_64
+@@ -21,6 +21,7 @@
+ 	cancel_delayed_work
+ 	consume_skb
+ 	cpu_number
++	cpu_online_mask
+ 	csum_ipv6_magic
+ 	dev_addr_add
+ 	dev_addr_del

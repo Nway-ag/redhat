@@ -1,0 +1,36 @@
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_ppc64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+@@ -128,6 +128,7 @@
+ 	pci_enable_msix
+ 	pci_find_capability
+ 	pci_get_device
++	pci_release_regions
+ 	pskb_expand_head
+ 	register_inet6addr_notifier
+ 	register_inetaddr_notifier
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_s390x
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+@@ -124,6 +124,7 @@
+ 	pci_enable_msix
+ 	pci_find_capability
+ 	pci_get_device
++	pci_release_regions
+ 	pskb_expand_head
+ 	register_inet6addr_notifier
+ 	register_inetaddr_notifier
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_x86_64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+@@ -132,6 +132,7 @@
+ 	pci_enable_msix
+ 	pci_find_capability
+ 	pci_get_device
++	pci_release_regions
+ 	pskb_expand_head
+ 	register_inet6addr_notifier
+ 	register_inetaddr_notifier
