@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>[redhat] kabi: Adding symbol cancel_delayed_work (kernel/workqueue.c) - Patchwork</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+  <script language="JavaScript" type="text/javascript" src="/js/common.js">
+  </script>
+
+ </head>
+ <body>
+  <div id="title">
+  <h1 style="float: left;">
+     <a
+      href="/">Patchwork</a><span
+      class="beta">&beta;</span>
+    [redhat] kabi: Adding symbol cancel_delayed_work (kernel/workqueue.c)</h1>
+  <div id="auth">
+
+     <a href="/accounts/login/">login</a>
+     <br/>
+     <a href="/accounts/register/">register</a>
+     <br/>
+     <a href="/help/about/">about</a>
+
+   </div>
+   <div style="clear: both;"></div>
+  </div>
+  <div id="nav">
+   <div id="navleft">
+   
+    <strong>Project</strong>: rhel7
+     :
+     <a href="/project/rhel7/list/"
+      >patches</a>
+     :
+     <a href="/project/rhel7/"
+      >project info</a>
+    
+     :
+     <a href="/"
+     >other projects</a>
+     
+    
+   </div>
+   <div id="navright">
+    <a href="/help/about/">about</a>
+   </div>
+   <div style="clear: both"></div>
+  </div>
+
+  <div id="content">
+
+<script language="JavaScript" type="text/javascript">
+function toggle_headers(link_id, headers_id)
+{
+    var link = document.getElementById(link_id)
+    var headers = document.getElementById(headers_id)
+
+    var hidden = headers.style['display'] == 'none';
+
+    if (hidden) {
+        link.innerHTML = 'hide';
+        headers.style['display'] = 'block';
+    } else {
+        link.innerHTML = 'show';
+        headers.style['display'] = 'none';
+    }
+
+}
+function show_comments_and_go(link_id, comments_id, anchor)
+{
+    var link = document.getElementById(link_id)
+    var comments = document.getElementById(comments_id)
+
+    link.innerHTML = 'hide';
+    comments.style['display'] = 'block';
+    window.location ='#' + anchor;
+}
+</script>
+
+<table class="patchmeta">
+ <tr>
+  <th>Submitter</th>
+  <td><a href="mailto:jolsa@redhat.com">Jiri Olsa</a></td></tr>
+ </tr>
+ <tr>
+  <th>Date</th>
+  <td>2014-01-26 19:11:46</td>
+ </tr>
+ <tr>
+  <th>Message ID</th>
+  <td>&lt;1390763802-14008-34-git-send-email-jolsa@redhat.com&gt;</td>
+ </tr>
+ <tr>
+  <th>Download</th>
+  <td>
+   <a href="/patch/75154/mbox/"
+   >mbox</a> |
+   <a href="/patch/75154/raw/"
+   >patch</a> |
+   <a href="/patch/75154/mbox2/"
+   >full mbox</a>
+   </td>
+ </tr>
+ <tr>
+  <th>Permalink</th>
+  <td><a href="/patch/75154/">/patch/75154/</a>
+ </tr>
+  <tr>
+   <th>State</td>
+   <td>Committed, archived</td>
+  </tr>
+
+
+ <tr>
+
+
+  <th>Tags:</th>
+  <td>
+  
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+         Patch available on stable <i>kernel-3.10.0-89.el7</i><br/>
+     
+  
+     
+     
+     
+     
+     
+     
+     
+     
+     
+         Succeeded testing on RHTS/beaker: <a href="https://beaker.engineering.redhat.com/jobs/594902">j:594902</a><br/>
+     
+     
+     
+     
+     
+  
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+         Patch committed on <i>kernel-3.10.0-89.el7</i><br/>
+     
+     
+  
+     
+     
+     
+     
+     
+     
+     
+     
+         Tested by RHTS/beaker: <a href="https://beaker.engineering.redhat.com/jobs/594902">j:594902</a><br/>
+     
+     
+     
+     
+     
+     
+  
+     
+     
+     
+     
+     
+     
+     
+     
+     
+         Succeeded testing on RHTS/beaker: <a href="https://beaker.engineering.redhat.com/jobs/593159">j:593159</a><br/>
+     
+     
+     
+     
+     
+  
+     
+     
+     
+     
+     
+     
+     
+     
+         Tested by RHTS/beaker: <a href="https://beaker.engineering.redhat.com/jobs/593159">j:593159</a><br/>
+     
+     
+     
+     
+     
+     
+  
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+  
+     
+     
+     
+     
+     
+     
+     
+     
+         Tested by RHTS/beaker: <a href="https://beaker.engineering.redhat.com/jobs/593141">j:593141</a><br/>
+     
+     
+     
+     
+     
+     
+  
+     
+     
+         <noscript>
+         ACKed-by: <a href="#190912">Oleg Nesterov</a><br/>
+         </noscript>
+         <a href="javascript:show_comments_and_go('togglecomments', 'showcomments', 190912)" title="ACK">ACKed</a> by Oleg Nesterov<br/>
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+  
+     
+     
+     
+     
+     
+         BZ: <a href="https://bugzilla.redhat.com/show_bug.cgi?id=726863">726863</a><br/>
+     
+     
+     
+     
+     
+     
+     
+     
+     
+  
+  </td>
+ <tr>
+  <th>Headers</th>
+  <td><a id="togglepatchheaders"
+   href="javascript:toggle_headers('togglepatchheaders', 'patchheaders')"
+   >show</a>
+   <div id="patchheaders" class="patchheaders" style="display:none;">
+    <pre>Return-Path: &lt;rhkernel-list-bounces@redhat.com&gt;
+X-Original-To: patchwork@patchwork.lab.bos.redhat.com
+Delivered-To: patchwork@patchwork.lab.bos.redhat.com
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by patchwork.lab.bos.redhat.com (Postfix) with ESMTP id 61829202FE
+	for &lt;patchwork@patchwork.lab.bos.redhat.com&gt;;
+	Sun, 26 Jan 2014 14:19:57 -0500 (EST)
+Received: from lists01.intranet.prod.int.phx2.redhat.com
+	(lists01.intranet.prod.int.phx2.redhat.com [10.5.30.73])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s0QJJuTL015396; Sun, 26 Jan 2014 14:19:56 -0500
+Received: from lists01.intranet.prod.int.phx2.redhat.com (localhost.localdomain
+	[127.0.0.1])
+	by lists01.intranet.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id s0QJJulT027973; Sun, 26 Jan 2014 14:19:56 -0500
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by lists01.intranet.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id s0QJHIZY013374 for &lt;rhkernel-list@post-office.corp.redhat.com&gt;;
+	Sun, 26 Jan 2014 14:17:18 -0500
+Received: from krava.brq.redhat.com (dhcp-1-189.brq.redhat.com [10.34.1.189])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with
+	ESMTP id s0QJGhe0019003; Sun, 26 Jan 2014 14:17:17 -0500
+From: Jiri Olsa &lt;jolsa@redhat.com&gt;
+To: rhkernel-list@redhat.com
+Subject: [PATCH RHEL7 BZ726863 033/329] kabi: Adding symbol cancel_delayed_work
+Date: Sun, 26 Jan 2014 20:11:46 +0100
+Message-Id: &lt;1390763802-14008-34-git-send-email-jolsa@redhat.com&gt;
+In-Reply-To: &lt;1390763802-14008-1-git-send-email-jolsa@redhat.com&gt;
+References: &lt;1390763802-14008-1-git-send-email-jolsa@redhat.com&gt;
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+X-loop: rhkernel-list@redhat.com
+X-BeenThere: rhkernel-list@redhat.com
+X-Mailman-Version: 2.1.12
+Precedence: junk
+Reply-To: Red Hat INTERNAL-ONLY kernel discussion list &lt;rhkernel-list@redhat.com&gt;
+Old-List-Id: Red Hat INTERNAL-ONLY kernel discussion list
+	&lt;rhkernel-list.redhat.com&gt;
+List-Unsubscribe: &lt;https://post-office.corp.redhat.com/mailman/options/rhkernel-list&gt;,
+	&lt;mailto:rhkernel-list-request@redhat.com?subject=unsubscribe&gt;
+List-Archive: &lt;http://post-office.corp.redhat.com/archives/rhkernel-list&gt;
+List-Post: &lt;mailto:rhkernel-list@redhat.com&gt;
+List-Help: &lt;mailto:rhkernel-list-request@redhat.com?subject=help&gt;
+List-Subscribe: &lt;https://post-office.corp.redhat.com/mailman/listinfo/rhkernel-list&gt;,
+	&lt;mailto:rhkernel-list-request@redhat.com?subject=subscribe&gt;
+Sender: rhkernel-list-bounces@redhat.com
+Errors-To: rhkernel-list-bounces@redhat.com
+List-Id: Red Hat INTERNAL-ONLY kernel discussion list &lt;rhkernel-list.redhat.com&gt;
+</pre>
+   </div>
+  </td>
+ </tr>
+</table>
+
+<div class="patchforms">
+
+
+
+
+
+
+ <div style="clear: both;">
+ </div>
+</div>
+
+<h2>Comments</h2>
+<a id="togglecomments"
+href="javascript:toggle_headers('togglecomments', 'showcomments')">show</a>
+<div id="showcomments" class="comment" style="display:none;">
+ 
+  <div class="comment">
+   <a name=189858></a>
+   <div class="meta">
+    <a href="mailto:jolsa@redhat.com">Jiri Olsa</a> - 2014-01-26 19:11:46
+   </div>
+   <div class="meta" align=right>
+    
+    
+     
+    
+     
+    
+     
+    
+     
+    
+     
+    
+     
+    
+     
+    
+     
+    
+     
+    
+     
+    
+    
+
+   </div>
+   <pre class="content">
+   Bugzilla: 726863
+https://bugzilla.redhat.com/show_bug.cgi?id=726863
+
+Symbols is already present in RHEL6 and requested again in RHEL7.
+---
+ redhat/kabi/kabi_whitelist_ppc64  | 1 +
+ redhat/kabi/kabi_whitelist_s390x  | 1 +
+ redhat/kabi/kabi_whitelist_x86_64 | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/redhat/kabi/kabi_whitelist_ppc64 b/redhat/kabi/kabi_whitelist_ppc64
+index 7fe5180..a249c3b 100644
+--- a/redhat/kabi/kabi_whitelist_ppc64
++++ b/redhat/kabi/kabi_whitelist_ppc64
+@@ -43,6 +43,7 @@
+ 	blk_start_request
+ 	boot_tvec_bases
+ 	call_usermodehelper
++	cancel_delayed_work
+ 	consume_skb
+ 	csum_ipv6_magic
+ 	dev_addr_add
+diff --git a/redhat/kabi/kabi_whitelist_s390x b/redhat/kabi/kabi_whitelist_s390x
+index 4782027..2601a68 100644
+--- a/redhat/kabi/kabi_whitelist_s390x
++++ b/redhat/kabi/kabi_whitelist_s390x
+@@ -43,6 +43,7 @@
+ 	blk_start_request
+ 	boot_tvec_bases
+ 	call_usermodehelper
++	cancel_delayed_work
+ 	consume_skb
+ 	csum_ipv6_magic
+ 	dev_addr_add
+diff --git a/redhat/kabi/kabi_whitelist_x86_64 b/redhat/kabi/kabi_whitelist_x86_64
+index 96c37d27..8076cc1 100644
+--- a/redhat/kabi/kabi_whitelist_x86_64
++++ b/redhat/kabi/kabi_whitelist_x86_64
+@@ -44,6 +44,7 @@
+ 	blk_start_request
+ 	boot_tvec_bases
+ 	call_usermodehelper
++	cancel_delayed_work
+ 	consume_skb
+ 	csum_ipv6_magic
+ 	dev_addr_add
+-- 
+1.8.3.1
+
+
+   </pre>
+  </div>
+ 
+  <div class="comment">
+   <a name=190912></a>
+   <div class="meta">
+    <a href="mailto:oleg@redhat.com">Oleg Nesterov</a> - 2014-01-31 18:00:48
+   </div>
+   <div class="meta" align=right>
+    
+    
+     
+    
+     
+    
+     
+    
+     
+    
+     
+    
+     
+    
+     
+    
+     
+    
+     
+      
+       <b>ACK</b>
+      
+      
+      
+     
+    
+     
+    
+    
+
+   </div>
+   <pre class="content">
+   ACK
+
+On 01/26, Jiri Olsa wrote:
+<span class="quote">&gt;</span>
+<span class="quote">&gt; Bugzilla: 726863</span>
+<span class="quote">&gt; https://bugzilla.redhat.com/show_bug.cgi?id=726863</span>
+<span class="quote">&gt; </span>
+<span class="quote">&gt; Symbols is already present in RHEL6 and requested again in RHEL7.</span>
+<span class="quote">&gt; ---</span>
+<span class="quote">&gt;  redhat/kabi/kabi_whitelist_ppc64  | 1 +</span>
+<span class="quote">&gt;  redhat/kabi/kabi_whitelist_s390x  | 1 +</span>
+<span class="quote">&gt;  redhat/kabi/kabi_whitelist_x86_64 | 1 +</span>
+<span class="quote">&gt;  3 files changed, 3 insertions(+)</span>
+<span class="quote">&gt; </span>
+<span class="quote">&gt; diff --git a/redhat/kabi/kabi_whitelist_ppc64 b/redhat/kabi/kabi_whitelist_ppc64</span>
+<span class="quote">&gt; index 7fe5180..a249c3b 100644</span>
+<span class="quote">&gt; --- a/redhat/kabi/kabi_whitelist_ppc64</span>
+<span class="quote">&gt; +++ b/redhat/kabi/kabi_whitelist_ppc64</span>
+<span class="quote">&gt; @@ -43,6 +43,7 @@</span>
+<span class="quote">&gt;  	blk_start_request</span>
+<span class="quote">&gt;  	boot_tvec_bases</span>
+<span class="quote">&gt;  	call_usermodehelper</span>
+<span class="quote">&gt; +	cancel_delayed_work</span>
+<span class="quote">&gt;  	consume_skb</span>
+<span class="quote">&gt;  	csum_ipv6_magic</span>
+<span class="quote">&gt;  	dev_addr_add</span>
+<span class="quote">&gt; diff --git a/redhat/kabi/kabi_whitelist_s390x b/redhat/kabi/kabi_whitelist_s390x</span>
+<span class="quote">&gt; index 4782027..2601a68 100644</span>
+<span class="quote">&gt; --- a/redhat/kabi/kabi_whitelist_s390x</span>
+<span class="quote">&gt; +++ b/redhat/kabi/kabi_whitelist_s390x</span>
+<span class="quote">&gt; @@ -43,6 +43,7 @@</span>
+<span class="quote">&gt;  	blk_start_request</span>
+<span class="quote">&gt;  	boot_tvec_bases</span>
+<span class="quote">&gt;  	call_usermodehelper</span>
+<span class="quote">&gt; +	cancel_delayed_work</span>
+<span class="quote">&gt;  	consume_skb</span>
+<span class="quote">&gt;  	csum_ipv6_magic</span>
+<span class="quote">&gt;  	dev_addr_add</span>
+<span class="quote">&gt; diff --git a/redhat/kabi/kabi_whitelist_x86_64 b/redhat/kabi/kabi_whitelist_x86_64</span>
+<span class="quote">&gt; index 96c37d27..8076cc1 100644</span>
+<span class="quote">&gt; --- a/redhat/kabi/kabi_whitelist_x86_64</span>
+<span class="quote">&gt; +++ b/redhat/kabi/kabi_whitelist_x86_64</span>
+<span class="quote">&gt; @@ -44,6 +44,7 @@</span>
+<span class="quote">&gt;  	blk_start_request</span>
+<span class="quote">&gt;  	boot_tvec_bases</span>
+<span class="quote">&gt;  	call_usermodehelper</span>
+<span class="quote">&gt; +	cancel_delayed_work</span>
+<span class="quote">&gt;  	consume_skb</span>
+<span class="quote">&gt;  	csum_ipv6_magic</span>
+<span class="quote">&gt;  	dev_addr_add</span>
+<span class="quote">&gt; -- </span>
+<span class="quote">&gt; 1.8.3.1</span>
+
+
+   </pre>
+  </div>
+ 
+</div>
+
+<h2>Commit message</h2>
+<div class="patch">
+<pre class="log_msg">
+Bugzilla: 726863
+https://bugzilla.redhat.com/show_bug.cgi?id=726863
+
+Symbols is already present in RHEL6 and requested again in RHEL7.
+<span class="p_del">---</span>
+
+
+</pre>
+</div>
+
+<h2>Patch</h2>
+<div class="patch">
+<pre class="content">
+<span class="p_header">diff --git a/redhat/kabi/kabi_whitelist_ppc64 b/redhat/kabi/kabi_whitelist_ppc64</span>
+<span class="p_header">index 6fe6b9a..4861f1c 100644</span>
+<span class="p_header">--- a/redhat/kabi/kabi_whitelist_ppc64</span>
+<span class="p_header">+++ b/redhat/kabi/kabi_whitelist_ppc64</span>
+<span class="p_chunk">@@ -18,6 +18,7 @@</span> <span class="p_context"></span>
+ 	atomic_notifier_chain_unregister
+ 	autoremove_wake_function
+ 	call_usermodehelper
+<span class="p_add">+	cancel_delayed_work</span>
+ 	consume_skb
+ 	csum_ipv6_magic
+ 	dev_addr_add
+<span class="p_header">diff --git a/redhat/kabi/kabi_whitelist_s390x b/redhat/kabi/kabi_whitelist_s390x</span>
+<span class="p_header">index 04ba217..e270c6c 100644</span>
+<span class="p_header">--- a/redhat/kabi/kabi_whitelist_s390x</span>
+<span class="p_header">+++ b/redhat/kabi/kabi_whitelist_s390x</span>
+<span class="p_chunk">@@ -18,6 +18,7 @@</span> <span class="p_context"></span>
+ 	atomic_notifier_chain_unregister
+ 	autoremove_wake_function
+ 	call_usermodehelper
+<span class="p_add">+	cancel_delayed_work</span>
+ 	consume_skb
+ 	csum_ipv6_magic
+ 	dev_addr_add
+<span class="p_header">diff --git a/redhat/kabi/kabi_whitelist_x86_64 b/redhat/kabi/kabi_whitelist_x86_64</span>
+<span class="p_header">index 4e714fa..089914d 100644</span>
+<span class="p_header">--- a/redhat/kabi/kabi_whitelist_x86_64</span>
+<span class="p_header">+++ b/redhat/kabi/kabi_whitelist_x86_64</span>
+<span class="p_chunk">@@ -18,6 +18,7 @@</span> <span class="p_context"></span>
+ 	atomic_notifier_chain_unregister
+ 	autoremove_wake_function
+ 	call_usermodehelper
+<span class="p_add">+	cancel_delayed_work</span>
+ 	consume_skb
+ 	csum_ipv6_magic
+ 	dev_addr_add
+
+</pre>
+</div>
+
+
+  </div>
+  <div id="footer">
+   <a href="http://ozlabs.org/~jk/projects/patchwork">patchwork</a>
+   patch tracking system
+  </div>
+ </body>
+</html>
+
+
+
