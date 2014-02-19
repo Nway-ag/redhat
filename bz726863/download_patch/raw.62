@@ -1,0 +1,36 @@
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_ppc64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+@@ -186,6 +186,7 @@
+ 	sscanf
+ 	strcat
+ 	strchr
++	strcmp
+ 	unregister_inet6addr_notifier
+ 	unregister_inetaddr_notifier
+ 	unregister_netdev
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_s390x
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+@@ -182,6 +182,7 @@
+ 	sscanf
+ 	strcat
+ 	strchr
++	strcmp
+ 	unregister_inet6addr_notifier
+ 	unregister_inetaddr_notifier
+ 	unregister_netdev
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_x86_64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+@@ -190,6 +190,7 @@
+ 	sscanf
+ 	strcat
+ 	strchr
++	strcmp
+ 	unregister_inet6addr_notifier
+ 	unregister_inetaddr_notifier
+ 	unregister_netdev

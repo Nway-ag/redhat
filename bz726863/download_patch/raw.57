@@ -1,0 +1,36 @@
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_ppc64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+@@ -136,6 +136,7 @@
+ 	prepare_to_wait_exclusive
+ 	printk
+ 	pskb_expand_head
++	queue_delayed_work_on
+ 	register_inet6addr_notifier
+ 	register_inetaddr_notifier
+ 	register_netdev
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_s390x
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+@@ -132,6 +132,7 @@
+ 	prepare_to_wait_exclusive
+ 	printk
+ 	pskb_expand_head
++	queue_delayed_work_on
+ 	register_inet6addr_notifier
+ 	register_inetaddr_notifier
+ 	register_netdev
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_x86_64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+@@ -140,6 +140,7 @@
+ 	prepare_to_wait_exclusive
+ 	printk
+ 	pskb_expand_head
++	queue_delayed_work_on
+ 	register_inet6addr_notifier
+ 	register_inetaddr_notifier
+ 	register_netdev

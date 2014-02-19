@@ -1,0 +1,36 @@
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_ppc64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+@@ -155,6 +155,7 @@
+ 	rtnl_unlock
+ 	schedule
+ 	schedule_timeout
++	simple_strtol
+ 	sk_alloc
+ 	sk_free
+ 	skb_checksum
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_s390x
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+@@ -151,6 +151,7 @@
+ 	rtnl_unlock
+ 	schedule
+ 	schedule_timeout
++	simple_strtol
+ 	sk_alloc
+ 	sk_free
+ 	skb_checksum
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_x86_64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+@@ -159,6 +159,7 @@
+ 	rtnl_unlock
+ 	schedule
+ 	schedule_timeout
++	simple_strtol
+ 	sk_alloc
+ 	sk_free
+ 	skb_checksum

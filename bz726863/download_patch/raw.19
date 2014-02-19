@@ -1,0 +1,36 @@
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_ppc64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+@@ -67,6 +67,7 @@
+ 	ip6_route_output
+ 	irq_stat
+ 	jiffies
++	jiffies_64
+ 	kernel_bind
+ 	kernel_getsockopt
+ 	kernel_recvmsg
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_s390x
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+@@ -63,6 +63,7 @@
+ 	ip6_route_output
+ 	irq_stat
+ 	jiffies
++	jiffies_64
+ 	kernel_bind
+ 	kernel_getsockopt
+ 	kernel_recvmsg
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_x86_64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+@@ -71,6 +71,7 @@
+ 	ip6_route_output
+ 	irq_stat
+ 	jiffies
++	jiffies_64
+ 	kernel_bind
+ 	kernel_getsockopt
+ 	kernel_recvmsg

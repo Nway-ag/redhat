@@ -1,0 +1,36 @@
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_ppc64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+@@ -69,6 +69,7 @@
+ 	jiffies
+ 	jiffies_64
+ 	jiffies_to_msecs
++	jiffies_to_timespec
+ 	kernel_bind
+ 	kernel_getsockopt
+ 	kernel_recvmsg
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_s390x
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+@@ -65,6 +65,7 @@
+ 	jiffies
+ 	jiffies_64
+ 	jiffies_to_msecs
++	jiffies_to_timespec
+ 	kernel_bind
+ 	kernel_getsockopt
+ 	kernel_recvmsg
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_x86_64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+@@ -73,6 +73,7 @@
+ 	jiffies
+ 	jiffies_64
+ 	jiffies_to_msecs
++	jiffies_to_timespec
+ 	kernel_bind
+ 	kernel_getsockopt
+ 	kernel_recvmsg

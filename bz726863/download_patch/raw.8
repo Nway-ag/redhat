@@ -1,0 +1,36 @@
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_ppc64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+@@ -24,6 +24,7 @@
+ 	cancel_delayed_work
+ 	consume_skb
+ 	cpu_online_mask
++	cpu_possible_mask
+ 	csum_ipv6_magic
+ 	current_kernel_time
+ 	del_timer
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_s390x
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+@@ -25,6 +25,7 @@
+ 	cancel_delayed_work
+ 	consume_skb
+ 	cpu_online_mask
++	cpu_possible_mask
+ 	csum_ipv6_magic
+ 	current_kernel_time
+ 	del_timer
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_x86_64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+@@ -26,6 +26,7 @@
+ 	consume_skb
+ 	cpu_number
+ 	cpu_online_mask
++	cpu_possible_mask
+ 	csum_ipv6_magic
+ 	current_kernel_time
+ 	del_timer

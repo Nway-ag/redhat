@@ -1,0 +1,36 @@
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_ppc64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_ppc64
+@@ -53,6 +53,7 @@
+ 	ether_setup
+ 	ethtool_op_get_link
+ 	finish_wait
++	free_irq
+ 	free_netdev
+ 	hci_alloc_dev
+ 	hci_free_dev
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_s390x
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_s390x
+@@ -53,6 +53,7 @@
+ 	ether_setup
+ 	ethtool_op_get_link
+ 	finish_wait
++	free_irq
+ 	free_netdev
+ 	in_aton
+ 	init_net
+Index: kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+===================================================================
+--- kernel-rhel7.git.orig/redhat/kabi/kabi_whitelist_x86_64
++++ kernel-rhel7.git/redhat/kabi/kabi_whitelist_x86_64
+@@ -57,6 +57,7 @@
+ 	ether_setup
+ 	ethtool_op_get_link
+ 	finish_wait
++	free_irq
+ 	free_netdev
+ 	hci_alloc_dev
+ 	hci_free_dev
