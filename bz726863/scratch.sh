@@ -8,7 +8,7 @@ done
 
 #pick up the keywords
 cd download_patch;
-for i in `seq 2 105`; do  #attention!!!
+for i in `seq 2 106`; do  #attention!!!
 	patch=`ls -l | sed -n ''$i'p' | awk '{print $9}'`
 	
 	value=`cat $patch | grep '+' | grep "ppc64" -c`
