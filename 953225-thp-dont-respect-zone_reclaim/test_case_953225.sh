@@ -2,7 +2,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # #
 # #   test_case_953225.sh of /kernel/memory/bug_953225
-# #   Description: common test for netconsole
+# #   Description: common test for MM_test 
 # #   Author: Wang Li <liwan@redhat.com>
 # #
 # # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
