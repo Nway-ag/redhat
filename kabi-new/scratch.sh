@@ -32,6 +32,7 @@ function set_env
 {
 	rpm -qa kernel-abi-whitelists
 	if [ $? -ne 0 ];then
+		echo "LOGINFO: Installing kernel-abi-whitelists..."
 		wget http://download.devel.redhat.com/brewroot/packages/kernel/`uname -r | cut -b 1-6`/`uname -r | cut -b 8-13`/noarch/kernel-abi-whitelists-"$KERNEL".noarch.rpm;
 		rpm -ivh kernel-abi-whitelists-"$KERNEL".noarch.rpm
 	fi

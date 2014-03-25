@@ -2,7 +2,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # #
 # #   test_case_bz726863.sh 
-# #   Description: common test for netconsole
+# #   Description: common test for kabi symbols 
 # #   Author: Li Wang <liwan@redhat.com>
 # #
 # # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
