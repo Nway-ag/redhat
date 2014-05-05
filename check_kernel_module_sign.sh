@@ -11,6 +11,9 @@ kernel_version=
 
 function set_test_env
 {
+
+while true;do
+
 	read -p "Enter the kernel version(example:kernel-3.7.0-0.32.el7.x86_64):" kernel_version;
 	kernel_arch=`echo $kernel_version|cut -d. -f6`
 	kernel_id1=`echo $kernel_version |cut -d- -f2`
@@ -18,7 +21,12 @@ function set_test_env
 
 	echo 
 	echo "LOG_INFO: Download the kernel pakeage, plese wait..."	
-	wget http://download.devel.redhat.com/brewroot/packages/kernel/${kernel_id1}/${kernel_id2}/${kernel_arch}/${kernel_version}.rpm   2>&1 >/dev/null
+	wget http://download.devel.redhat.com/brewroot/packages/kernel/${kernel_id1}/${kernel_id2}/${kernel_arch}/${kernel_version}.rpm  
+	if [ $? -eq 0 ];then
+		break;
+	fi
+done
+
 	echo 
 	echo "LOG_INFO: Decompressing the kernel packages..."
 	rpm2cpio ${kernel_version}.rpm | cpio -di 2>&1 >/dev/null
@@ -90,7 +98,7 @@ function main
 	check_sign_modu
 	verify_sign_key
 	modu_sign_test
-#	cleanup
+	cleanup
 
 	return 0
 }
