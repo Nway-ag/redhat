@@ -16,6 +16,7 @@ while true;do
 
 	read -p "Enter the kernel version(example:kernel-3.7.0-0.32.el7.x86_64):" kernel_version;
 	kernel_arch=`echo $kernel_version|cut -d. -f6`
+#	kernel_arch=`echo $kernel_version|cut -d. -f5`
 	kernel_id1=`echo $kernel_version |cut -d- -f2`
 	kernel_id2=`echo $kernel_version |sed "s/\.*.$kernel_arch//" |cut -d- -f3`
 
