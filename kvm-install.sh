@@ -20,7 +20,7 @@ fi
 
 #general a virtual disk for the os
 dd if=/dev/urandom of=123.img bs=1024 count=1024
-mkfs.ext2 -c 123.img 2048
+echo y | mkfs.ext2 -c 123.img 2048
 mkdir /mnt/task
 mount -o loop 123.img /mnt/task/;
 
