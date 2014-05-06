@@ -10,7 +10,7 @@ set -x
 #setup the environment
 egrep '(vmx|svm)' /proc/cpuinfo 2>&1 >/dev/null
 value=$?
-if [ $value -ne 0];then
+if [ $value -ne 0 ];then
 	echo "Sorry, this machine is not support kvm install."
 	exit -1;
 else
