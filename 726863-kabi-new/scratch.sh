@@ -28,7 +28,7 @@
 KERNEL=`uname -r | cut -b 1-13`
 PATCH_NUMS=
 
-function set_env
+function set_env()
 {
 	rpm -qa kernel-abi-whitelists
 	if [ $? -ne 0 ];then
@@ -40,7 +40,7 @@ function set_env
 	mkdir download_patch download_patch_old results results_old
 }
 
-function fetch_patch
+function fetch_patch()
 {
 	###download all the patches### 
 	echo "LOGINFO: Patches Donwloading ..."
@@ -51,7 +51,7 @@ function fetch_patch
 	done
 }
 
-function pick_up_keywords
+function pick_up_keywords()
 {
 	###pick up the keywords###
 	echo "LOGINFO: Pick up all the keywords from patch..."
@@ -79,7 +79,7 @@ function pick_up_keywords
 	cd ..
 }
 
-function test_running
+function test_running()
 {
 	###checking the keywords in new kabi###
 	echo "LOGINFO: compare the results in kernel-89-el7 ..."
@@ -105,7 +105,7 @@ function test_running
 	done
 }
 
-function check_output
+function check_output()
 {
 	###print the compare resul###
 	if [ -f ./results/kabi_whitelist_ppc64_omit.txt ] || [ -f ./results/kabi_whitelist_s390x_omit.txt ] || [ -f ./results/kabi_whitelist_s390x_omit.txt ];then
@@ -115,7 +115,7 @@ function check_output
 	fi
 }
 
-function cleanup
+function cleanup()
 {
 	cp  ./download_patch/* ./download_patch_old;
 	rm -rf ./download_patch/*;
@@ -124,7 +124,7 @@ function cleanup
 	rm -fr 1 2;
 }
 
-function main
+function main()
 {
 	set_env
 	fetch_patch
