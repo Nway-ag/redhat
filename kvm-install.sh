@@ -9,8 +9,7 @@ set -x
 
 #setup the environment
 egrep '(vmx|svm)' /proc/cpuinfo 2>&1 >/dev/null
-value=$?
-if [ $value -ne 0 ];then
+if [ $? -ne 0 ];then
 	echo "Sorry, this machine is not support kvm install."
 	exit -1;
 else
@@ -26,8 +25,7 @@ mount -o loop 123.img /mnt/task/;
 
 #restart the libvertd service
 egrep 7 /etc/redhat-release;
-value=$?
-if [ $value -eq 0 ];then
+if [ $? -eq 0 ];then
 	systemctl restart libvirtd.service	
 else
 	service libvirtd restart
