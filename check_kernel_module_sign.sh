@@ -9,7 +9,7 @@ sign_key=
 module_id=
 kernel_version=
 
-function set_test_env
+function set_test_env()
 {
 
 while true;do
@@ -39,7 +39,7 @@ done
 	find lib/modules/${kernel_name}/ -name "*.ko" > all_the_kernel_modules.txt
 }
 
-function check_sign_modu
+function check_sign_modu()
 {
 	echo
 	echo "LOG_INFO: Saving the modules_sign_key to signed_modules_key.txt"
@@ -53,7 +53,7 @@ function check_sign_modu
 	done
 }
 
-function verify_sign_key
+function verify_sign_key()
 {
 	sign_key=`tail -n 1 signed_modules_key.txt`
 	echo
@@ -69,7 +69,7 @@ function verify_sign_key
 	done
 }
 
-function modu_sign_test
+function modu_sign_test()
 {
 	# this function checking the kernel modules sig_key results
 	# if modules were not been signed or signed with error signature, process will be exit with -1.
@@ -88,12 +88,12 @@ function modu_sign_test
 	fi
 }
 
-function cleanup
+function cleanup()
 {
 	rm -fr *.txt boot/ etc/ lib/ *.rpm;
 }
 
-function main
+function main()
 {
 	set_test_env
 	check_sign_modu
