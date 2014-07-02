@@ -2,8 +2,8 @@
 set -x
 
 #------------------------------------------------------------#
-# This bash script is just using for install virtual machine #
-# Author: Li Wang <liwang@redhat.com>			     #
+# This script is just using for virtual-machine install #
+# Author: Li Wang <liwan@redhat.com>			     #
 #------------------------------------------------------------#
 
 
@@ -34,12 +34,16 @@ fi
 
 #install a new virtual machine
 virt-install \
-	--name RHEL-6.4 	\
+	--name RHEL-6.5 	\
+	--virt-type kvm		\
+#	--arch x86_64		\
 	--ram 2048 		\
 	--vcpus 2 		\
 	--nographics		\
-	--disk path=/var/lib/libvirt/images/RHEL-6.4.img,size=10 \
-	--location http://download.devel.redhat.com/rel-eng/RHEL-7.0-20140326.0/compose/Server/x86_64/os  --noreboot
+	--nonetwork		\
+	--disk path=/var/lib/libvirt/images/RHEL-6.5.img,size=10 \
+#	--location http://download.devel.redhat.com/rel-eng/RHEL-7.0-20140326.0/compose/Server/x86_64/os  --noreboot
+	--location http://download.eng.rdu2.redhat.com/rel-eng/latest-RHEL6.5/6.5/Server/x86_64/os/ 
 
 set +x
 exit 0;
