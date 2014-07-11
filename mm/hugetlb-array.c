@@ -1,3 +1,13 @@
+/*
+ * This program use Huge TLB is by using special shared memeory region.
+ *
+ * Usage:
+ * 	1. echo 4 >/proc/sys/vm/nr_hugepages 
+ * 	2. gcc hugetlb-array.c -o hugetlb-array -Wall
+ * 	3. ./hugetlb-array
+ * 	4. cat /proc/meminfo |grep -i huge
+ */
+
 #include <stdio.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
