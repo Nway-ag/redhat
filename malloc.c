@@ -7,12 +7,15 @@
 #include <stdlib.h>
 #include <malloc.h>
 
+#define MB_1 (1024*1024)
+#define GB_1 (1024*MB_1)
+
 int main(int argc, char *argv[])
 {
 	char *str=NULL;
 	int N = atoi(argv[1]);
 
-	str = (char *)malloc(1024*1024*N);
+	str = (char *)malloc(N*MB_1);
 	if(str == NULL)
 	{
 		printf("Malloc failed.\n");
