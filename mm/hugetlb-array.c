@@ -22,6 +22,7 @@ int shmid1;
 void init_hugetlb_seg()
 {
 	shmid1 = shmget(2, MB_8, SHM_HUGETLB | IPC_CREAT | SHM_R | SHM_W);
+	//                       ^^^^^^^^^^^
 	if ( shmid1 < 0 ) {
 		perror("shmget");
 		exit(1);
