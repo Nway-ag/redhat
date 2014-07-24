@@ -13,7 +13,7 @@ if [ $? -ne 0 ];then
 	echo "Sorry, this machine is not support kvm install."
 	exit -1;
 else
-	yum install qemu-kvm qemu-img libvirt virt-install -y
+	yum install qemu-kvm qemu-img libvirt virt-manager libvirt-python python-virtinst libvirt-client virt-install -y
 
 fi
 
