@@ -22,7 +22,7 @@ int shmid1;
 void init_hugetlb_seg()
 {
 	shmid1 = shmget(2, MB_8, SHM_HUGETLB | IPC_CREAT | SHM_R | SHM_W);
-	//                       ^^^^^^^^^^^
+				/*^^^^^^^^^^*/
 	if ( shmid1 < 0 ) {
 		perror("shmget");
 		exit(1);
@@ -50,21 +50,40 @@ void rd_from_array()
 	for( i=0 ; i<MB_8 ; i++)
 		if (a[i] == 'A') count++;
 	if (count==i)
-		printf("HugeTLB read success :-)\n");
+		printf("HugeTLB read success! :-)\n");
 	else
 		printf("HugeTLB read failed :-(\n");
 }
 
 int main(int argc, char *argv[])
 {
+	printf("-------------------------------\n");
+	system("grep Huge /proc/meminfo");
+	printf("-------------------------------\n");
+	printf("Press any key to HugeTLB initialize...\n");
+	getchar();
+
 	init_hugetlb_seg();
 	printf("HugeTLB memory segment initialized !\n");
-	printf("Press any key to write to memory area\n");
+	printf("-------------------------------\n");
+	system("grep Huge /proc/meminfo");
+	printf("-------------------------------\n\n");
+
+	printf("Press any key to write to memory area...\n");
 	getchar();
 	wr_to_array();
+	printf("-------------------------------\n");
+	system("grep Huge /proc/meminfo");
+	printf("-------------------------------\n\n");
+
 	printf("Press any key to rd from memory area\n");
 	getchar();
 	rd_from_array();
+	printf("-------------------------------\n");
+	system("grep Huge /proc/meminfo");
+	printf("-------------------------------\n\n");
+
 	shmctl(shmid1, IPC_RMID, NULL);
+
 	return 0;
 }
