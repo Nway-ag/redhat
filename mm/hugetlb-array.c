@@ -8,20 +8,40 @@
  * 	4. cat /proc/meminfo |grep -i huge
  */
 
+#define _GNU_SOURCE
 #include <stdio.h>
+#include <unistd.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <stdlib.h>
 
-#define MB_1 (1024*1024)
-#define MB_8 (8*MB_1)
+#define KB (1<<10L)
+#define MB (1<<20L)
+#define SIZE (8*MB)
+
+#if __i386__ || __x86_64__
+#define PAGE_SIZE (4 * KB)
+#define HPAGE_SIZE (2 * MB)
+
+#elif __powerpc__ || __powerpc64__
+#define PAGE_SIZE (64 * KB)
+#define HPAGE_SIZE (16 * MB)
+
+#elif __s390__ || __s390x__
+#define PAGE_SIZE (4 * KB)
+#define HPAGE_SIZE (1 * MB)
+
+#else
+#define PAGE_SIZE (4 * KB)
+#define HPAGE_SIZE (2 * MB)
+#endif
 
 char  *a;
 int shmid1;
 
 void init_hugetlb_seg()
 {
-	shmid1 = shmget(2, MB_8, SHM_HUGETLB | IPC_CREAT | SHM_R | SHM_W);
+	shmid1 = shmget(2, SIZE, SHM_HUGETLB | IPC_CREAT | SHM_R | SHM_W);
 				/*^^^^^^^^^^*/
 	if ( shmid1 < 0 ) {
 		perror("shmget");
@@ -39,7 +59,7 @@ void init_hugetlb_seg()
 void wr_to_array()
 {
 	int i;
-	for( i=0 ; i<MB_8 ; i++) {
+	for( i=0 ; i<SIZE ; i++) {
 		a[i] = 'A';
 	}
 }
@@ -47,7 +67,7 @@ void wr_to_array()
 void rd_from_array()
 {
 	int i, count = 0;
-	for( i=0 ; i<MB_8 ; i++)
+	for( i=0 ; i<SIZE ; i++)
 		if (a[i] == 'A') count++;
 	if (count==i)
 		printf("HugeTLB read success! :-)\n");
