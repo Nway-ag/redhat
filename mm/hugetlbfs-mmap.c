@@ -4,8 +4,9 @@
  * Usage:
  *	1. mkdir -p /mnt/huge
  * 	2. mount none /mnt/huge -t hugetlbfs
- * 	3. gcc -o hugetlbfs-mmap hugetlbfs-mmap.c
- * 	4. ./hugetlbfs-mmap
+ * 	3. echo 1 >/proc/sys/vm/nr_hugepaes
+ * 	4. gcc -o hugetlbfs-mmap hugetlbfs-mmap.c
+ * 	5. ./hugetlbfs-mmap
  *
  */
 
@@ -23,7 +24,7 @@ int main()
 	int i, j, count=0;
 
 	/* create a file in hugetlb fs */
-	fd = open("/mnt/huge/test", O_CREAT | O_RDWR);
+	fd = open("/mnt/huge/test", O_CREAT | O_RDWR, 0755);
 	if(fd < 0){
 		perror("Err: ");
 		return -1;
