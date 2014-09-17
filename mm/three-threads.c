@@ -6,10 +6,10 @@ pthread_t thread;
 
 void* thread3(void* d)
 {
-	int count3 = 0;
+	int count3 = 1;
 
-	while(count3 < 1000){
-		sleep(10);
+	while(count3 <= 3){
+//		sleep(10);
 		printf("Thread 3: %d\n", count3++);
 	}
 	return NULL;
@@ -17,9 +17,9 @@ void* thread3(void* d)
 
 void* thread2(void* d)
 {
-	int count2 = 0;
+	int count2 = 1;
 
-	while(count2 < 1000){
+	while(count2 <= 3){
 		printf("Thread 2: %d\n", count2++);
 	}
 	return NULL;
@@ -30,9 +30,9 @@ int main(){
 	pthread_create(&thread, NULL, thread3, NULL);
 
 	//Thread 1
-	int count1 = 0;
+	int count1 = 1;
 
-	while(count1 < 1000){
+	while(count1 <= 3){
 		printf("Thread 1: %d\n", count1++);
 	}
 
