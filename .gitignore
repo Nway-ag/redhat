@@ -35,7 +35,6 @@
 *.xz
 *.lz4
 *.lzo
-*.patch
 *.gcno
 
 # # Debian directory (make deb-pkg)
