@@ -17,12 +17,6 @@ else
 
 fi
 
-#general a virtual disk for the os
-dd if=/dev/urandom of=123.img bs=1024 count=1024
-echo y | mkfs.ext2 -c 123.img 2048
-mkdir /mnt/task
-mount -o loop 123.img /mnt/task/;
-
 #restart the libvertd service
 egrep 7 /etc/redhat-release;
 if [ $? -eq 0 ];then
@@ -34,15 +28,16 @@ fi
 
 #install a new virtual machine
 virt-install \
-	--name RHEL-7.1	\
+	--name RHEL-7.3	\
 	--virt-type kvm		\
 	--arch x86_64		\
 	--ram 2048 		\
 	--vcpus 2 		\
 	--nographics		\
 	--nonetwork		\
-	--disk path=/var/lib/libvirt/images/RHEL-7.1.img,size=10 \
+	--disk path=/var/lib/libvirt/images/RHEL-7.3.img,size=10 \
 	--location http://download.devel.redhat.com/rel-eng/latest-RHEL-7/compose/Server/x86_64/os \
+	--extra-args 'console=ttyS0,115200 ks=file:/SERVER.ks'	\
 	--noreboot
 
 set +x
