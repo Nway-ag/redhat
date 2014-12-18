@@ -2,7 +2,8 @@
 #include <malloc.h>
 
 int main(void)
-{ void *m;
+{
+	void *m;
 	int i;
 
 	printf("Allocation VIRT memory\n");
