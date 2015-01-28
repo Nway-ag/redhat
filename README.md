@@ -1,4 +1,4 @@
 redhat
 ======
 
-bash scripts or job related file
+shell scripts and job related file and some messy codes 
