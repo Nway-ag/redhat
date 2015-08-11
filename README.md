@@ -1,4 +1,6 @@
 redhat
 ======
 
-shell scripts and job related file and some messy codes 
+Ugh, My stupid shell files and some messy code!
+
+Please don't read these holy shit code, since it have myself on display in shame...
