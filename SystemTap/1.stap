@@ -1,0 +1,8 @@
+# 1.perf to trace what funtion cost time
+# 2.systemtap to analysis detail in kernel
+
+probe kernel.function("change_protection_range")
+{
+	printf("pid:%d %s\n", pid(), $$parms);
+	print_backtrace();
+}
