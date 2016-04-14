@@ -1,9 +1,12 @@
+# Set mail from header
+set use_from=yes
+set realname='Li Wang'
+set from='Li Wang <wangli5665@gmail.com>'
+
 set imap_user = "wangli5665@gmail.com" 
-set imap_pass = "**********" 
+set imap_pass = "levi3222853" 
 set smtp_url = "smtp://wangli5665@smtp.gmail.com:587/" 
-set smtp_pass = "**********" 
-set from = "wangli5665@gmail.com" 
-set realname = "Li Wang"
+set smtp_pass = "levi3222853" 
 
 set editor = "vim"
 
@@ -34,9 +37,29 @@ bind editor <Tab> complete-query
 bind editor ^T complete 
 bind editor <space> noop
 
+# Set mail boxes
+mailboxes =mbox
+mailboxes =postponed
+mailboxes =sent
+
+mailboxes =linux-kernel
+mailboxes =linux-mm
+mailboxes =kernelnewbies
+mailboxes =ltp
+
+subscribe linux-mm@kvack.org
+subscribe linux-kernel@vger.kernel.org
+subscribe kernelnewbies@kernelnewbies.org
+subscribe crash-utility@redhat.com
+subscribe kexec@lists.fedoraproject.org
+subscribe kexec@lists.infradead.org
+subscribe ltp@lists.linux.it
+subscribe redhat-list@redhat.com
+
 macro index,pager y "<enter-command>unset trash\n <delete-message>" "Gmail archive message" 
 macro index,pager d "<enter-command>set trash=\"imaps://imap.googlemail.com/[GMail]/Bin\"\n <delete-message>" "Gmail delete message" 
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox" 
 macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail" 
 macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages" 
 macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+alias noreply Coursera <noreply@coursera.org>
