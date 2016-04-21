@@ -1,50 +1,52 @@
 # Set mail from header
 set use_from=yes
 set realname='Li Wang'
-set from='Li Wang <wangli5665@gmail.com>'
+set from='Li Wang <liwang@redhat.com>'
+set imap_user="liwan@redhat.com"
+set imap_pass="zhtreygtcaqwnsmf"
+set smtp_url="smtp://liwan@redhat.com@smtp.gmail.com:587/"
+set smtp_pass="zhtreygtcaqwnsmf"
+set sendmail="/usr/bin/msmtp"
+set folder="imaps://imap.gmail.com:993"
 
-set imap_user = "wangli5665@gmail.com" 
-set imap_pass = "levi3222853" 
-set smtp_url = "smtp://wangli5665@gmail.com@smtp.gmail.com:587" 
-set smtp_pass = "levi3222853" 
+set spoolfile="+INBOX"
+set postponed="Drafts"
+set record="Sent Mail"
+set imap_check_subscribed
+set hostname=gmail.com
+set mail_check=120
+set timeout=300
+set imap_keepalive=300
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
 
-set editor = "vim"
-set sendmail = "/usr/bin/msmtp"
-set folder = "imaps://imap.gmail.com:993" 
-set spoolfile = "+INBOX" 
-set imap_check_subscribed 
-set hostname = gmail.com 
-set mail_check = 120 
-set timeout = 300 
-set imap_keepalive = 300 
-set postponed = "+[GMail]/Drafts" 
-set record = "+[GMail]/Sent Mail" 
-set header_cache=~/.mutt/cache/headers 
-set message_cachedir=~/.mutt/cache/bodies 
-set certificate_file=~/.mutt/certificates 
-set move = no 
-set include 
-set sort = 'threads' 
-set sort_aux = 'reverse-last-date-received' 
-set auto_tag = yes 
-ignore "Authentication-Results:" 
-ignore "DomainKey-Signature:" 
-ignore "DKIM-Signature:" 
-hdr_order Date From To Cc 
-alternative_order text/plain text/html * 
-auto_view text/html 
-bind editor <Tab> complete-query 
-bind editor ^T complete 
+set editor="vim"
+set move=no
+set sort='threads'
+set sort_aux='reverse-last-date-received'
+set auto_tag=yes
+set pager_context=1		# display one line context on pageup/pagedown
+set quit=ask-yes		# confirm quit, default to yes
+set ispell="aspell -e -c"	# spell checker
+set include=yes			# include original message in reply
+
+# Set send charset
+set send_charset="us-ascii:utf-8"
+# To recognize reply messages
+set reply_regexp="^(re([\[0-9\]+])*|aw|回复|答复)(:|:)[ \t]*"
+# recognize quoted messages, default is "^([ \t]*[|>:}#])+"
+set quote_regexp="^([ \t]*[>:])+"
+
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
+hdr_order Date From To Cc
+alternative_order text/plain text/html *
+auto_view text/html
+bind editor <Tab> complete-query
+bind editor ^T complete
 bind editor <space> noop
-
-subscribe linux-mm@kvack.org
-subscribe linux-kernel@vger.kernel.org
-subscribe kernelnewbies@kernelnewbies.org
-subscribe crash-utility@redhat.com
-subscribe kexec@lists.fedoraproject.org
-subscribe kexec@lists.infradead.org
-subscribe ltp@lists.linux.it
-subscribe redhat-list@redhat.com
 
 macro index,pager y "<enter-command>unset trash\n <delete-message>" "Gmail archive message" 
 macro index,pager d "<enter-command>set trash=\"imaps://imap.googlemail.com/[GMail]/Bin\"\n <delete-message>" "Gmail delete message" 
@@ -52,9 +54,11 @@ macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail" 
 macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages" 
 macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
-macro index,pager gk "<change-folder>=Kernel/linux-kernel<enter>" "Go to linux kernel"
-macro index,pager gm "<change-folder>=Kernel/linux-mm<enter>" "Go to linux kernel mm"
-macro index,pager gl "<change-folder>=Test/ltp<enter>" "Go to ltp"
+macro index,pager gq "<change-folder>=QE/kernel-qe<enter>" "Go to kernel-qe list"
+macro index,pager gk "<change-folder>=QE/kernel-general-qe<enter>" "Go to our team list"
+macro index,pager gl "<change-folder>=DEV/ltp-list<enter>" "Go to ltp"
+macro index,pager ge "<change-folder>=ORD-ANN/eng-china<enter>" "Go to eng-china"
+macro index,pager gb "<change-folder>=bugzilla<enter>" "Go to bugzilla"
 alias noreply Coursera <noreply@coursera.org>
 
 
@@ -65,7 +69,7 @@ bind index \cf next-page
 bind index \cb previous-page
 bind index \Cx sync-mailbox
 bind index r display-message
-bind index R reply
+bind index R group-reply
 bind index = parent-message
 
 bind pager j next-line
@@ -99,8 +103,7 @@ color status        brightwhite     black
 color indicator     white           blue
 color tree          magenta         black   # arrows in threads
 
-# 列表部分, 高亮不同状态的邮件, 具体的pattern(例如~N)参见mutt manual的4.2节
-
+# hacking mail list, highlight different status
 color index         red             black         "~A"                        # all messages
 color index         brightred       black         "~E"                        # expired messages
 color index         brightcyan      black         "~N"                        # new messages
@@ -111,26 +114,11 @@ color index         brightblue      black         "~U"                        # 
 color index         brightblue      black         "~U~$"                      # unread, unreferenced messages
 color index         brightblue      black         "~v"                        # messages part of a collapsed thread
 color index         brightblue      black         "~P"                        # messages from me
-color index         cyan            black         "~p!~F"                     # messages to me
 color index         brightgreen     black         "~N~p!~F"                   # new messages to me
 color index         brightgreen     black         "~U~p!~F"                   # unread messages to me
 color index         green           black         "~R~p!~F"                   # messages to me
-color index         red             black         "~F"                        # flagged messages
 color index         red             black         "~F~p"                      # flagged messages to me
-color index         red             black         "~N~F"                      # new flagged messages
-color index         red             black         "~N~F~p"                    # new flagged messages to me
-color index         red             black         "~U~F~p"                    # new flagged messages to me
 color index         white           brightmagenta "~D"                        # deleted messages
-color index         white           black         "~v~(!~N!~O)"               # collapsed thread with no unread
-color index         magenta          black         "~v~(~N|~O)"               # collapsed thread with some unread
-color index         magenta           black         "~N~v~(~N)"               # collapsed thread with unread parent
-color index         red             white           "~v~(~F)!~N"              # collapsed thread with flagged, no unread
-color index         yellow          white           "~v~(~F~N)"               # collapsed thread with some unread & flagged
-color index         green           white           "~N~v~(~F~N)"             # collapsed thread with unread parent & flagged
-color index         green           white           "~N~v~(~F)"               # collapsed thread with unread parent, no unread inside, but some flagged
-color index         yellow          red             "~v~(~D)"                 # thread with deleted (doesn't differentiate between all or partial)
-
-# 邮件内容页面邮件头部分高亮
 
 # color header        brightcyan      default         "^"
 color hdrdefault    brightblue      black
