@@ -105,40 +105,40 @@ color tree          magenta         black   # arrows in threads
 
 # hacking mail list, highlight different status
 color index         red             black         "~A"                        # all messages
-color index         brightred       black         "~E"                        # expired messages
-color index         brightcyan      black         "~N"                        # new messages
-color index         brightcyan      black         "~O"                        # old messages
-color index         brightmagenta   black         "~Q"                        # messages that have been replied to
+color index         red             black         "~E"                        # expired messages
+color index         cyan            black         "~N"                        # new messages
+color index         cyan            black         "~O"                        # old messages
+color index         magenta         black         "~Q"                        # messages that have been replied to
 color index         white           black         "~R"                        # read messages
-color index         brightblue      black         "~U"                        # unread messages
-color index         brightblue      black         "~U~$"                      # unread, unreferenced messages
-color index         brightblue      black         "~v"                        # messages part of a collapsed thread
-color index         brightblue      black         "~P"                        # messages from me
-color index         brightgreen     black         "~N~p!~F"                   # new messages to me
-color index         brightgreen     black         "~U~p!~F"                   # unread messages to me
-color index         green           black         "~R~p!~F"                   # messages to me
+color index         green           black         "~U"                        # unread messages
+color index         blue            black         "~U~$"                      # unread, unreferenced messages
+color index         blue            black         "~v"                        # messages part of a collapsed thread
+color index         cyan            black         "~P"                        # messages from me
+color index         green           black         "~N~p!~F"                   # new messages to me
+color index         green           black         "~U~p!~F"                   # unread messages to me
+color index         blue            black         "~R~p!~F"                   # messages to me
 color index         red             black         "~F~p"                      # flagged messages to me
 color index         white           brightmagenta "~D"                        # deleted messages
 
 # color header        brightcyan      default         "^"
-color hdrdefault    brightblue      black
-color header        brightgreen     black         "^(From)"
-color header        brightyellow    black         "^(Subject)"
+color hdrdefault    blue      black
+color header        green     black         "^(From)"
+color header        yellow    black         "^(Subject)"
 
 # highlight the patch color
 color   body     red            black    "^-.*"
 color   body     green          black    "^[+].*"
-color   body     brightwhite    black    "^diff --git.*"
-color   body     brightwhite    black    "^index [a-f0-9].*"
-color   body     brightwhite    black    "^\-\-\- a.*"
-color   body     brightwhite    black    "^[\+]{3} b.*"
-color   body     brightyellow   black    "^@@.*"
-color   body     brightmagenta  black    "^(Signed-off-by).*"
-color   body     brightmagenta  black    "^(Reported-by).*"
-color   body     brightmagenta  black    "^(Suggested-by).*"
-color   body     brightmagenta  black    "^(Acked-by).*"
-color   body     brightmagenta  black    "^(Reviewed-by).*"
-color   body     brightmagenta  black    "^\-\-\-$"
+color   body     white          black    "^diff --git.*"
+color   body     white          black    "^index [a-f0-9].*"
+color   body     white          black    "^\-\-\- a.*"
+color   body     white          black    "^[\+]{3} b.*"
+color   body     yellow         black    "^@@.*"
+color   body     magenta        black    "^(Signed-off-by).*"
+color   body     magenta        black    "^(Reported-by).*"
+color   body     magenta        black    "^(Suggested-by).*"
+color   body     magenta        black    "^(Acked-by).*"
+color   body     magenta        black    "^(Reviewed-by).*"
+color   body     magenta        black    "^\-\-\-$"
 # color   body     brightmagenta  black    "^(Cc).*"
 # color   body     brightmagenta  black    "^(CC).*"
 color   body     white          black    "^( \#define).*"

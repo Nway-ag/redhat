@@ -46,6 +46,7 @@ int get_page_fault_num ( )
 	FILE *f = fopen( "/proc/self/stat", "r" );
 	char s[11][256];
 	int pg;
+//	int ret = fscanf(fp, "%*s %*s %*s %*s %*s %*s %*s %*s %*s %*s %*s %d", &pg);
 	int ret = fscanf( f, "%s %s %s %s %s %s %s %s %s %s %s %d",
                           s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8], s[9], s[10], &pg );
 	if ( ret != 12 ) {
@@ -59,16 +60,7 @@ int main ( int argc, const char *argv[] )
 {
 	int i;
 	int alloc_sz;
-
-	argc = argc;
-	alloc_sz = atoi( argv[1] );
-	printf( "%d\n", alloc_sz );
-
-	id_src_1gb = -1;
-	src_1gb = INV_PTR;
-	for ( i=0; i<MAX_DST; ++i ) {
-		id_dst[i] = -1;
-		dst[i] = INV_PTR;
+argc = argc; alloc_sz = atoi( argv[1] ); printf( "%d\n", alloc_sz ); id_src_1gb = -1; src_1gb = INV_PTR; for ( i=0; i<MAX_DST; ++i ) { id_dst[i] = -1; dst[i] = INV_PTR;
 	}
 
 	// allocate source memory (1GB only)
