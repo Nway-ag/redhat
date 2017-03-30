@@ -18,7 +18,9 @@ case ${HOST} in
 
 	*nay*) CONSERVER="console.lab.eng.nay.redhat.com";;
 
-	*)     CONSERVER="conserver-01.eng.bos.redhat.com";;
+	    *) CONSERVER="console.lab.eng.nay.redhat.com";;
+
+#	*)     CONSERVER="conserver-01.eng.bos.redhat.com";;
 esac
 
 sudo console -l liwan -M ${CONSERVER} ${HOST}
