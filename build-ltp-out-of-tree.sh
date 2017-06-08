@@ -1,4 +1,4 @@
-#!/bin/bash   
+#!/bin/bash
 
 TOP=$PWD
 TOP_SRCDIR=$TOP/ltp
@@ -16,7 +16,7 @@ fi
 
 pushd "$TOP_BUILDDIR" && "$TOP_SRCDIR/configure"
 OUT_OF_BUILD_TREE_DIR=$TOP_BUILDDIR
-make \
+make -j`nproc` \
 	-C "$OUT_OF_BUILD_TREE_DIR" \
 	-f "$TOP_SRCDIR/Makefile" \
 	"top_srcdir=$TOP_SRCDIR" \
