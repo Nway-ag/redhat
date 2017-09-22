@@ -1,0 +1,24 @@
+[general]
+user = liwan
+width = 79
+
+[header]
+highlights = Highlights: 
+joy = Joy: 
+
+[footer]
+status = Status: Green
+
+[tools]
+type = git
+kernel = /home/wangli/kernel
+kernel-general = /home/wangli/kernel-general
+ltp = /home/wangli/ltp/ltp-upstream
+
+[wiki]
+type = wiki
+wiki test = http://wiki.test.redhat.com/
+
+[products]
+type = items
+header = Work on products

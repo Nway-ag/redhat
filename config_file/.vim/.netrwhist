@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/wangli/kernel/vm/hugepage/libhugetlbfs/patches'
+let g:netrw_dirhist_2='/home/wangli/ltp/ltp-upstream/testcases/kernel/tracing/ftrace_test/ftrace_regression'
+let g:netrw_dirhist_3='/home/wangli/ltp/ltp-upstream/testcases/kernel/tracing/ftrace_stress_test/ftrace_stress'
+let g:netrw_dirhist_4='/home/wangli/ltp/ltp-upstream/testcases/kernel/mem/mem'

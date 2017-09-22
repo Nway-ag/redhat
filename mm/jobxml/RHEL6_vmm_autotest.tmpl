@@ -1,0 +1,352 @@
+<job product="cpe:/o:redhat:enterprise_linux:6:ga" retention_tag="audit">
+	<whiteboard>
+		VMM_Auto_Test on @DISTRO_NAME@
+	</whiteboard>
+	<recipeSet priority="Normal">
+		<recipe kernel_options="" kernel_options_post="" ks_meta="" role="None" whiteboard="@WHITEBOARD@">
+			<autopick random="false"/>
+			<watchdog panic="None"/>
+			<packages/>
+			<ks_appends/>
+			<repos>
+				@KERNEL_REPO@
+			</repos>
+			<distroRequires>
+				<and>
+					<name op="==" value="@DISTRO_NAME@"/>
+					<variant op="==" value="Server"/>
+					<arch op="==" value="i386"/>
+				</and>
+			</distroRequires>
+			<hostRequires>
+				<and>
+					<group op="!=" value="fence-test"/>
+					<system>
+						<type op="==" value="Machine"/>
+						<hypervisor op="==" value=""/>
+					</system>
+				</and>
+			</hostRequires>
+			<task name="/distribution/install" role="STANDALONE">
+				<params/>
+			</task>
+			@KERNEL_INSTALL@
+			@PKG_INSTALL@
+			<task name="/kernel/vm/hugepage/libhugetlbfs" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/page_alloc" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/noncontiguous_vmalloc" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/ltp-hugetlbfs" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/cmdline" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/stress/v7" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/783497-tmpfs-off-by-one" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/distribution/ltp/generic" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/filesystems/general/719495-wrongly-vfree-kmalloc-area" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/zram/regression/722926-zram-concurrent-access" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/643371-avoid-crash/guest" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/filesystems/general/719495-wrongly-vfree-kmalloc-area" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/zram/regression/722926-zram-concurrent-access" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/643371-avoid-crash/guest" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/817719-tmpfs-race-umount-swapoff-truncate-writepage" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/786320-shmem-pagefault" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/773522-deadlock-when-move-task-between-cgroups" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/tmpfs/aim7" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/THP/bz647849-deadlock" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/performance/libmicro" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/stress/ibm/pounder30" role="STANDALONE">
+				<params/>
+			</task>
+		</recipe>
+	</recipeSet>
+	<recipeSet priority="Normal">
+		<recipe kernel_options="" kernel_options_post="" ks_meta="" role="None" whiteboard="@WHITEBOARD@">
+			<autopick random="false"/>
+			<watchdog panic="None"/>
+			<packages/>
+			<ks_appends/>
+			<repos>
+				@KERNEL_REPO@
+			</repos>
+			<distroRequires>
+				<and>
+					<name op="==" value="@DISTRO_NAME@"/>
+					<variant op="==" value="Server"/>
+					<arch op="==" value="x86_64"/>
+				</and>
+			</distroRequires>
+			<hostRequires>
+				<and>
+					<group op="!=" value="fence-test"/>
+					<system>
+						<type op="==" value="Machine"/>
+						<hypervisor op="==" value=""/>
+					</system>
+				</and>
+			</hostRequires>
+			<task name="/distribution/install" role="STANDALONE">
+				<params/>
+			</task>
+			@KERNEL_INSTALL@
+			@PKG_INSTALL@
+			<task name="/kernel/vm/hugepage/libhugetlbfs" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/page_alloc" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/noncontiguous_vmalloc" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/ltp-hugetlbfs" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/mce-test/hwpoison" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/THP/bz636116-MADV_HUGEPAGE-undeclared" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/cmdline" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/stress/v7" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/783497-tmpfs-off-by-one" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/distribution/ltp/generic" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/filesystems/general/719495-wrongly-vfree-kmalloc-area" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/zram/regression/722926-zram-concurrent-access" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/THP/bz706385-thp-improvements" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/643371-avoid-crash/guest" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/817719-tmpfs-race-umount-swapoff-truncate-writepage" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/773522-deadlock-when-move-task-between-cgroups" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/tmpfs/aim7" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/THP/bz647849-deadlock" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/786320-shmem-pagefault" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/performance/libmicro" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/stress/ibm/pounder30" role="STANDALONE">
+				<params/>
+			</task>
+		</recipe>
+	</recipeSet>
+	<recipeSet priority="Normal">
+		<recipe kernel_options="" kernel_options_post="" ks_meta="" role="None" whiteboard="@WHITEBOARD@">
+			<autopick random="false"/>
+			<watchdog panic="None"/>
+			<packages/>
+			<ks_appends/>
+			<repos>
+				@KERNEL_REPO@
+			</repos>
+			<distroRequires>
+				<and>
+					<name op="==" value="@DISTRO_NAME@"/>
+					<variant op="==" value="Server"/>
+					<arch op="==" value="ppc64"/>
+				</and>
+			</distroRequires>
+			<hostRequires>
+				<and>
+					<group op="!=" value="fence-test"/>
+					<system>
+						<type op="==" value="Machine"/>
+						<hypervisor op="==" value=""/>
+					</system>
+				</and>
+			</hostRequires>
+			<task name="/distribution/install" role="STANDALONE">
+				<params/>
+			</task>
+			@KERNEL_INSTALL@
+			@PKG_INSTALL@
+			<task name="/kernel/vm/hugepage/libhugetlbfs" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/page_alloc" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/noncontiguous_vmalloc" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/ltp-hugetlbfs" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/cmdline" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/stress/v7" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/783497-tmpfs-off-by-one" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/filesystems/general/719495-wrongly-vfree-kmalloc-area" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/zram/regression/722926-zram-concurrent-access" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/643371-avoid-crash/guest" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/817719-tmpfs-race-umount-swapoff-truncate-writepage" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/773522-deadlock-when-move-task-between-cgroups" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/tmpfs/aim7" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/performance/libmicro" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/stress/ibm/pounder30" role="STANDALONE">
+				<params/>
+			</task>
+		</recipe>
+	</recipeSet>
+	<recipeSet priority="Normal">
+		<recipe kernel_options="" kernel_options_post="" ks_meta="" role="None" whiteboard="@WHITEBOARD@">
+			<autopick random="false"/>
+			<watchdog panic="None"/>
+			<packages/>
+			<ks_appends/>
+			<repos>
+				@KERNEL_REPO@
+			</repos>
+			<distroRequires>
+				<and>
+					<name op="==" value="@DISTRO_NAME@"/>
+					<variant op="==" value="Server"/>
+					<arch op="==" value="s390x"/>
+				</and>
+			</distroRequires>
+			<hostRequires>
+				<and>
+					<group op="!=" value="fence-test"/>
+					<system>
+						<type op="==" value="Machine"/>
+						<hypervisor op="==" value=""/>
+					</system>
+				</and>
+			</hostRequires>
+			<task name="/distribution/install" role="STANDALONE">
+				<params/>
+			</task>
+			@KERNEL_INSTALL@
+			@PKG_INSTALL@
+			<task name="/kernel/vm/hugepage/libhugetlbfs" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/page_alloc" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/noncontiguous_vmalloc" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/ltp-hugetlbfs" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/hugepage/cmdline" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/stress/v7" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/783497-tmpfs-off-by-one" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/distribution/ltp/generic" role="standalone">
+				<params/>
+			</task>
+			<task name="/kernel/filesystems/general/719495-wrongly-vfree-kmalloc-area" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/zram/regression/722926-zram-concurrent-access" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/643371-avoid-crash/guest" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/817719-tmpfs-race-umount-swapoff-truncate-writepage" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/regression/773522-deadlock-when-move-task-between-cgroups" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/vm/tmpfs/aim7" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/performance/libmicro" role="STANDALONE">
+				<params/>
+			</task>
+			<task name="/kernel/stress/ibm/pounder30" role="STANDALONE">
+				<params/>
+			</task>
+		</recipe>
+	</recipeSet>
+</job>

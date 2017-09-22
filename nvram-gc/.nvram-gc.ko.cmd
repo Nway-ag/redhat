@@ -1,0 +1,1 @@
+cmd_/home/wangli/nvram-gc/nvram-gc.ko := ld -r -m elf_x86_64 -T /usr/src/kernels/3.12.5-200.fc19.x86_64/scripts/module-common.lds --build-id  -o /home/wangli/nvram-gc/nvram-gc.ko /home/wangli/nvram-gc/nvram-gc.o /home/wangli/nvram-gc/nvram-gc.mod.o

@@ -1,0 +1,12 @@
+identity wangli-5665@163.com
+	hostname = smtp.163.com:25
+	username = "wangli-5665"
+	password = ""
+	default
+
+identity wangli5665@gmail.com
+	hostname = smtp.google.com:25
+	username = "wangli5665"
+	password = ""
+
+mda "/usr/bin/procmail -d %T"
